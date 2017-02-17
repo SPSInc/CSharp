@@ -1,0 +1,77 @@
+﻿
+
+- UUIDs
+	* private static final String serviceUUID = "0000180a-0000-1000-8000-00805f9b34fb";
+	* private static final String customServiceUUID = "0000ffff-1212-efde-1523-785fef13d123";
+	* private static final String characteristicUUID = "00000001-1212-efde-1523-785fef13d123";
+
+- characteristic
+  	* description: economy model은 하나의 characteristic 밖에 가지고 있지 않습니다. 그 characteristic은 다음과 같은 식으로 pressure와 temperature를 얻을 수 있습니다.
+
+	
+	* float pressure = characteristic.getIntValue(BluetoothGattCharacteristic.FORMAT_UINT16, 0);
+	* float temperature = characteristic.getIntValue(BluetoothGattCharacteristic.FORMAT_UINT16, 2) / 10.f;
+
+	getIntValue는 다음과 같이 정의되어 있습니다.
+	* Integer getIntValue (int formatType, int offset);
+
+	* pressure는 hPa 단위로 interger 값을 bytes로 넣는다.
+	* temperature는 27.3도 일 경우 273을 bytes값으로 넣는다.
+	* battery는 Max 10 ~ Min 0의 값을 가지며 가능하다면 소수점 1자리까지 포함하여 9.5인 경우 95로 3인경우 30으로 bytes값을 넣는다.
+
+    +------------------------------------------------------------------+
+	| pressure (2 bytes) |  temperature (2 bytes) |  battery (2 byte)  |
+	+------------------------------------------------------------------+
+
+- 처음 broadcast 할 때 Manufacture data 영역에 Serial No.가 들어가야 함.
+	Serial No. 규칙
+	- 이코노미
+	+-------------------+
+	|E|1| | | | | | | |B|  -> String 형태를 bytes로 바꿔서 전송
+	+-------------------+
+
+	- 어드밴스 안드로이드
+	+-------------------+
+	|A|3| | | | | | | |B|  -> String 형태를 bytes로 바꿔서 전송
+	+-------------------+
+
+	- 어드밴스 아이폰
+	+-------------------+
+	|I|1| | | | | | | |B|  -> String 형태를 bytes로 바꿔서 전송
+	+-------------------+
+	처음 빈칸 3자리: 인쇄날짜 -> 각각 연도와 월과 날짜가 대응문자가 존재 아래 참고
+	뒤 빈칸 4자리: 제품번호 -> 16진수
+
+	대응문자
+	   연도 		 월 		 날짜
+	2014 - N 	1 - A 	1 - A
+	2015 - O 	2 - B 	2 - B
+	2016 - P 	3 - C 	3 - C
+	2017 - Q 	4 - D 	4 - D
+	2018 - R 	5 - E 	5 - E
+	2019 - S 	6 - F 	6 - F
+	2020 - T 	7 - G 	7 - G
+	2021 - U 	8 - H 	8 - H
+	2022 - V 	9 - I 	9 - I
+	2023 - W 	10 - J 	10 - J
+	2024 - X 	11 - K 	11 - K
+	2025 - Y 	12 - L 	12 - L
+						13 - M
+						14 - N
+						15 - O
+						16 - P
+						17 - Q
+						18 - R
+						19 - S
+						20 - T
+						21 - U
+						22 - V
+						23 - W
+						24 - X
+						25 - Y
+						26 - Z
+						27 - 1
+						28 - 2
+						29 - 3
+						30 - 4
+						31 - 5

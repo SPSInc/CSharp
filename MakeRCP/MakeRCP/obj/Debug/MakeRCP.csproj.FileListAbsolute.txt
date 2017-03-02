@@ -1,0 +1,9 @@
+E:\CSharp\MakeRCP\MakeRCP\bin\Debug\MakeRCP.exe.config
+E:\CSharp\MakeRCP\MakeRCP\bin\Debug\MakeRCP.exe
+E:\CSharp\MakeRCP\MakeRCP\bin\Debug\MakeRCP.pdb
+E:\CSharp\MakeRCP\MakeRCP\obj\Debug\MakeRCP.Properties.Resources.resources
+E:\CSharp\MakeRCP\MakeRCP\obj\Debug\MakeRCP.csproj.GenerateResource.Cache
+E:\CSharp\MakeRCP\MakeRCP\obj\Debug\MakeRCP.exe
+E:\CSharp\MakeRCP\MakeRCP\obj\Debug\MakeRCP.pdb
+E:\CSharp\MakeRCP\MakeRCP\obj\Debug\MakeRCP.MainForm.resources
+E:\CSharp\MakeRCP\MakeRCP\obj\Debug\MakeRCP.csprojResolveAssemblyReference.cache

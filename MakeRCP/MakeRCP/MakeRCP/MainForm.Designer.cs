@@ -52,6 +52,7 @@
             this.btnMake = new System.Windows.Forms.Button();
             this.gbResult = new System.Windows.Forms.GroupBox();
             this.txResult = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.gbDevice.SuspendLayout();
             this.gbCommand.SuspendLayout();
             this.gbParameters.SuspendLayout();
@@ -61,9 +62,11 @@
             // gbDevice
             // 
             this.gbDevice.Controls.Add(this.cbDevice);
-            this.gbDevice.Location = new System.Drawing.Point(12, 12);
+            this.gbDevice.Location = new System.Drawing.Point(10, 10);
+            this.gbDevice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbDevice.Name = "gbDevice";
-            this.gbDevice.Size = new System.Drawing.Size(475, 71);
+            this.gbDevice.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbDevice.Size = new System.Drawing.Size(416, 57);
             this.gbDevice.TabIndex = 0;
             this.gbDevice.TabStop = false;
             this.gbDevice.Text = "Device";
@@ -75,27 +78,31 @@
             this.cbDevice.FormattingEnabled = true;
             this.cbDevice.Items.AddRange(new object[] {
             "ASR-0230D"});
-            this.cbDevice.Location = new System.Drawing.Point(6, 29);
+            this.cbDevice.Location = new System.Drawing.Point(5, 23);
+            this.cbDevice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbDevice.Name = "cbDevice";
-            this.cbDevice.Size = new System.Drawing.Size(186, 23);
+            this.cbDevice.Size = new System.Drawing.Size(163, 20);
             this.cbDevice.TabIndex = 0;
             // 
             // gbCommand
             // 
             this.gbCommand.Controls.Add(this.btnSelect);
             this.gbCommand.Controls.Add(this.cbCommand);
-            this.gbCommand.Location = new System.Drawing.Point(12, 89);
+            this.gbCommand.Location = new System.Drawing.Point(10, 71);
+            this.gbCommand.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbCommand.Name = "gbCommand";
-            this.gbCommand.Size = new System.Drawing.Size(475, 77);
+            this.gbCommand.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbCommand.Size = new System.Drawing.Size(416, 62);
             this.gbCommand.TabIndex = 1;
             this.gbCommand.TabStop = false;
             this.gbCommand.Text = "Command";
             // 
             // btnSelect
             // 
-            this.btnSelect.Location = new System.Drawing.Point(238, 20);
+            this.btnSelect.Location = new System.Drawing.Point(208, 16);
+            this.btnSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(103, 33);
+            this.btnSelect.Size = new System.Drawing.Size(90, 26);
             this.btnSelect.TabIndex = 2;
             this.btnSelect.Text = "Select";
             this.btnSelect.UseVisualStyleBackColor = true;
@@ -111,26 +118,31 @@
             "Set Channel",
             "Set TX Power",
             "Get Session"});
-            this.cbCommand.Location = new System.Drawing.Point(6, 24);
+            this.cbCommand.Location = new System.Drawing.Point(5, 19);
+            this.cbCommand.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbCommand.Name = "cbCommand";
-            this.cbCommand.Size = new System.Drawing.Size(186, 23);
+            this.cbCommand.Size = new System.Drawing.Size(163, 20);
             this.cbCommand.TabIndex = 0;
+            this.cbCommand.SelectedIndexChanged += new System.EventHandler(this.SelectChangeCommand);
             // 
             // gbParameters
             // 
             this.gbParameters.Controls.Add(this.btnMake);
-            this.gbParameters.Location = new System.Drawing.Point(12, 172);
+            this.gbParameters.Location = new System.Drawing.Point(10, 138);
+            this.gbParameters.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbParameters.Name = "gbParameters";
-            this.gbParameters.Size = new System.Drawing.Size(475, 327);
+            this.gbParameters.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbParameters.Size = new System.Drawing.Size(416, 262);
             this.gbParameters.TabIndex = 2;
             this.gbParameters.TabStop = false;
             this.gbParameters.Text = "Parameters";
             // 
             // btnMake
             // 
-            this.btnMake.Location = new System.Drawing.Point(356, 286);
+            this.btnMake.Location = new System.Drawing.Point(312, 229);
+            this.btnMake.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMake.Name = "btnMake";
-            this.btnMake.Size = new System.Drawing.Size(113, 35);
+            this.btnMake.Size = new System.Drawing.Size(99, 28);
             this.btnMake.TabIndex = 0;
             this.btnMake.Text = "Make";
             this.btnMake.UseVisualStyleBackColor = true;
@@ -139,30 +151,42 @@
             // gbResult
             // 
             this.gbResult.Controls.Add(this.txResult);
-            this.gbResult.Location = new System.Drawing.Point(12, 505);
+            this.gbResult.Location = new System.Drawing.Point(10, 404);
+            this.gbResult.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbResult.Name = "gbResult";
-            this.gbResult.Size = new System.Drawing.Size(481, 73);
+            this.gbResult.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbResult.Size = new System.Drawing.Size(421, 58);
             this.gbResult.TabIndex = 3;
             this.gbResult.TabStop = false;
             this.gbResult.Text = "Result";
             // 
             // txResult
             // 
-            this.txResult.Location = new System.Drawing.Point(6, 28);
+            this.txResult.Location = new System.Drawing.Point(5, 22);
+            this.txResult.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txResult.Name = "txResult";
-            this.txResult.Size = new System.Drawing.Size(469, 25);
+            this.txResult.Size = new System.Drawing.Size(411, 21);
             this.txResult.TabIndex = 0;
-
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Location = new System.Drawing.Point(469, 108);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(395, 463);
+            this.panel1.TabIndex = 4;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(499, 590);
+            this.ClientSize = new System.Drawing.Size(900, 695);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.gbResult);
             this.Controls.Add(this.gbParameters);
             this.Controls.Add(this.gbCommand);
             this.Controls.Add(this.gbDevice);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "Make RCP";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -186,6 +210,7 @@
         private System.Windows.Forms.GroupBox gbResult;
         private System.Windows.Forms.Button btnMake;
         private System.Windows.Forms.TextBox txResult;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

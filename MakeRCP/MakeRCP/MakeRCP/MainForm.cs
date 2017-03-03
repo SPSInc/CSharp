@@ -13,6 +13,11 @@ namespace MakeRCP
     public partial class MainForm : Form
     {
         StoreRCP storeRCP;
+
+        Form1 form1 = new Form1();
+        Form2 form2 = new Form2();
+        Form3 form3 = new Form3();
+
         public MainForm()
         {
             InitializeComponent();
@@ -30,13 +35,23 @@ namespace MakeRCP
             cbDevice.SelectedIndex = 0;
             cbCommand.SelectedIndex = 0;
             setParametersPowerOnOff();
+
+            form1.TopLevel = false;
+            form2.TopLevel = false;
+            form3.TopLevel = false;
+            panel1.Controls.Add(form2);
+            panel1.Controls.Add(form3);
+            panel1.Controls.Add(form1);
+           
+
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            storeRCP.setDeviceIndex(cbDevice.SelectedIndex);
-            storeRCP.setCommandIndex(cbCommand.SelectedIndex);
-            setParamtersUI(cbDevice.SelectedIndex, cbCommand.SelectedIndex);
+            
+
+
+       
         }
 
         private void btnMake_Click(object sender, EventArgs e)
@@ -401,6 +416,38 @@ namespace MakeRCP
             foreach (byte b in ba)
                 hex.AppendFormat("{0:x2}", b);
             return hex.ToString().ToUpper();
+        }
+
+        private void SelectChangeCommand(object sender, EventArgs e)
+        {
+            int nSel = cbCommand.SelectedIndex;
+
+            form1.Hide();
+            form2.Hide();
+            form3.Hide();
+
+            switch (nSel)
+            {
+                case 0:
+                   
+                    break;
+
+                case 1:
+                    form1.Show();
+                    break;
+
+                case 2:
+                    form2.Show();
+                    break;
+                case 3:
+                    form3.Show();
+                    break;
+
+            }
+
+
+
+            
         }
     }
 }

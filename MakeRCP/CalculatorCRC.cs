@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MakeRCP
 {
-    class CalculatorCRC
+    public class CalculatorCRC
     {
-        private ushort crcPolynomial(byte b, ushort acc)
+        private static ushort crcPolynomial(byte b, ushort acc)
         {
             acc = (ushort)((byte)(acc >> 8) | (ushort)(acc << 8));
             acc ^= b;
@@ -17,22 +17,22 @@ namespace MakeRCP
             acc ^= (ushort)(((acc & 0xff) << 4) << 1);
             return acc;
         }
-        private ushort crcSum(byte[] msg, ushort leghth, ushort crc)
+        private static ushort crcSum(byte[] msg, ushort leghth, ushort crc)
         {
             ushort i;
             for (i = 1; i < leghth; i++)
             {
-                crc = this.crcPolynomial(msg[i], crc);
+                crc = crcPolynomial(msg[i], crc);
             }
             return crc;
         }
-        public ushort crcAppend(byte[] message, ushort length)
+        public static ushort crcAppend(byte[] message, ushort length)
         {
             ushort crc;
-            crc = this.crcSum(message, length, 0xFFFF);
+            crc = crcSum(message, length, 0xFFFF);
             return crc;
         }
-        public string ByteArrayToString(byte[] ba)
+        public static string ByteArrayToString(byte[] ba)
         {
             StringBuilder hex = new StringBuilder(ba.Length * 2);
             foreach (byte b in ba)

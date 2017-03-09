@@ -10,20 +10,21 @@ using System.Windows.Forms;
 
 namespace MakeRCP
 {
+    
     public partial class GetSessionForm : Form
     {
-        private RCPinterface frm = null;
-        public GetSessionForm(RCPinterface frm)
-
+        public delegate void FormSendDataHandler(string strRcp);
+        public event FormSendDataHandler FormSendEvent;
+        
+        public GetSessionForm()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
-            this.frm = frm;
         }
 
         private void btnMake_Click(object sender, EventArgs e)
         {
-            this.frm.setRCP(makeGetSessionRCP());
+            this.FormSendEvent(makeGetSessionRCP());
         }
         private string makeGetSessionRCP()
         {
@@ -36,11 +37,10 @@ namespace MakeRCP
             RCP[i++] = 0x00; // Length(LSB)
             RCP[i++] = 0x7E; // End Mark
             // CRC
-            CalculatorCRC calculatorCRC = new CalculatorCRC();
-            ushort crc = calculatorCRC.crcAppend(RCP, (ushort)i);
+            ushort crc = CalculatorCRC.crcAppend(RCP, (ushort)i);
             RCP[i++] = (byte)(crc >> 8);
             RCP[i++] = (byte)crc;
-            return calculatorCRC.ByteArrayToString(RCP);
+            return CalculatorCRC.ByteArrayToString(RCP);
         }
     }
 }

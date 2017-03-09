@@ -12,14 +12,16 @@ namespace MakeRCP
 {
     public partial class GetInfoForm : Form
     {
-        private RCPinterface frm = null;
+        public delegate void FormSendDataHandler(string strRcp);
+        public event FormSendDataHandler FormSendEvent;
+
         private System.Windows.Forms.RadioButton[] rbInformation;
 
-        public GetInfoForm(RCPinterface frm)
+        public GetInfoForm()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
-            this.frm = frm;
+            
         }
 
         private void GetInfoForm_Load(object sender, EventArgs e)
@@ -44,8 +46,7 @@ namespace MakeRCP
 
         private void btnMake_Click(object sender, EventArgs e)
         {
-            this.frm.setRCP(makeGetInformationRCP());
-            
+            this.FormSendEvent(makeGetInformationRCP());
         }
         private string makeGetInformationRCP()
         {
@@ -66,11 +67,10 @@ namespace MakeRCP
             }
             RCP[i++] = 0x7E; // End Mark
             // CRC
-            CalculatorCRC calculatorCRC = new CalculatorCRC();
-            ushort crc = calculatorCRC.crcAppend(RCP, (ushort)i);
+            ushort crc = CalculatorCRC.crcAppend(RCP, (ushort)i);
             RCP[i++] = (byte)(crc >> 8);
             RCP[i++] = (byte)crc;
-            return calculatorCRC.ByteArrayToString(RCP);
+            return CalculatorCRC.ByteArrayToString(RCP);
         }
     }
 }

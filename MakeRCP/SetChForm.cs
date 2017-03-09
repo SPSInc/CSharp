@@ -12,12 +12,13 @@ namespace MakeRCP
 {
     public partial class SetChForm : Form
     {
-        private RCPinterface frm = null;
-        public SetChForm(RCPinterface frm)
+        public delegate void FormSendDataHandler(string strRcp);
+        public event FormSendDataHandler FormSendEvent;
+        
+        public SetChForm()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
-            this.frm = frm;
         }
 
         private void SetChForm_Load(object sender, EventArgs e)
@@ -27,7 +28,7 @@ namespace MakeRCP
 
         private void btnMake_Click(object sender, EventArgs e)
         {
-            this.frm.setRCP(makeSetChannelRCP());
+            this.FormSendEvent(makeSetChannelRCP());
         }
         private string makeSetChannelRCP()
         {
@@ -46,11 +47,10 @@ namespace MakeRCP
             RCP[i++] = (byte)Convert.ToInt32(tbOffset.Text);
             RCP[i++] = 0x7E; // End Mark
             // CRC
-            CalculatorCRC calculatorCRC = new CalculatorCRC();
-            ushort crc = calculatorCRC.crcAppend(RCP, (ushort)i);
+            ushort crc = CalculatorCRC.crcAppend(RCP, (ushort)i);
             RCP[i++] = (byte)(crc >> 8);
             RCP[i++] = (byte)crc;
-            return calculatorCRC.ByteArrayToString(RCP);
+            return CalculatorCRC.ByteArrayToString(RCP);
         }
     }
 }

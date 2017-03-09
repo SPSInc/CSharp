@@ -12,13 +12,14 @@ namespace MakeRCP
 {
     public partial class PowerOnOffForm : Form
     {
-        private RCPinterface frm = null;
-        public PowerOnOffForm(RCPinterface frm)
+        public delegate void FormSendDataHandler(string strRcp);
+        public event FormSendDataHandler FormSendEvent;
+        
+        public PowerOnOffForm()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
 
-            this.frm = frm;
         }
 
         private void PowerOnOffForm_Load(object sender, EventArgs e)
@@ -28,9 +29,7 @@ namespace MakeRCP
 
         private void btnMake_Click(object sender, EventArgs e)
         {
-            //textBox1.Text = "btnMake click";
-           
-            this.frm.setRCP(makePowerOnOffRCP());
+            this.FormSendEvent(makePowerOnOffRCP());
         }
         private string makePowerOnOffRCP()
         {
@@ -70,14 +69,13 @@ namespace MakeRCP
             RCP[i++] = 0xFF; // mode
             RCP[i++] = 0x7E; // End Mark
             // CRC
-            CalculatorCRC calculatorCRC = new CalculatorCRC();
-            ushort crc = calculatorCRC.crcAppend(RCP, (ushort)i);
+            ushort crc = CalculatorCRC.crcAppend(RCP, (ushort)i);
             RCP[i++] = (byte)(crc >> 8);
             RCP[i++] = (byte)crc;
 
-            string tttt = calculatorCRC.ByteArrayToString(RCP);
-            textBox1.Text = tttt;
-            return tttt;
+            return CalculatorCRC.ByteArrayToString(RCP);
+            
+            
             
         }
     }

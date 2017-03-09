@@ -35,7 +35,6 @@
             this.cbLED = new System.Windows.Forms.CheckBox();
             this.cbIllumination = new System.Windows.Forms.CheckBox();
             this.btnMake = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.SuspendLayout();
             // 
@@ -99,13 +98,6 @@
             this.btnMake.UseVisualStyleBackColor = true;
             this.btnMake.Click += new System.EventHandler(this.btnMake_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(78, 210);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(306, 25);
-            this.textBox1.TabIndex = 6;
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -119,7 +111,6 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(457, 343);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnMake);
             this.Controls.Add(this.cbIllumination);
             this.Controls.Add(this.cbLED);
@@ -143,7 +134,6 @@
         private System.Windows.Forms.CheckBox cbLED;
         private System.Windows.Forms.CheckBox cbIllumination;
         private System.Windows.Forms.Button btnMake;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

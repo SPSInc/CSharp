@@ -10,14 +10,8 @@ using System.Windows.Forms;
 
 namespace MakeRCP
 {
-    public interface RCPinterface
+    public partial class MainForm : Form
     {
-        void setRCP(string strRCP);
-    }
-    public partial class MainForm : Form, RCPinterface
-    {
-        StoreRCP storeRCP;
-
         PowerOnOffForm powerForm;
         GetInfoForm infoForm;
         SetChForm setChForm;
@@ -39,13 +33,17 @@ namespace MakeRCP
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            storeRCP = new StoreRCP();
+            powerForm = new PowerOnOffForm();
+            infoForm = new GetInfoForm();
+            setChForm = new SetChForm();
+            setTxPowForm = new SetTxPowerForm();
+            getSesForm = new GetSessionForm();
 
-            powerForm = new PowerOnOffForm(this as RCPinterface);
-            infoForm = new GetInfoForm(this as RCPinterface);
-            setChForm = new SetChForm(this as RCPinterface);
-            setTxPowForm = new SetTxPowerForm(this as RCPinterface);
-            getSesForm = new GetSessionForm(this as RCPinterface);
+            powerForm.FormSendEvent += new PowerOnOffForm.FormSendDataHandler(writeRcp);
+            infoForm.FormSendEvent += new GetInfoForm.FormSendDataHandler(writeRcp);
+            setChForm.FormSendEvent += new SetChForm.FormSendDataHandler(writeRcp);
+            setTxPowForm.FormSendEvent += new SetTxPowerForm.FormSendDataHandler(writeRcp);
+            getSesForm.FormSendEvent += new GetSessionForm.FormSendDataHandler(writeRcp);
 
             cbDevice.SelectedIndex = 0;
             cbCommand.SelectedIndex = 0;
@@ -69,6 +67,10 @@ namespace MakeRCP
             panel1.Controls.Add(setTxPowForm);
             panel1.Controls.Add(getSesForm);
             
+        }
+        private void writeRcp(string strRcp)
+        {
+            txResult.Text = strRcp;
         }
 
         private void SelectChangeCommand(object sender, EventArgs e)

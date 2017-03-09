@@ -12,20 +12,27 @@ namespace MakeRCP
 {
     public partial class SetTxPowerForm : Form
     {
-        private RCPinterface frm = null;
-        public SetTxPowerForm(RCPinterface frm)
+        public delegate void FormSendDataHandler(string strRcp);
+        public event FormSendDataHandler FormSendEvent;
+        
+        public SetTxPowerForm()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
-            this.frm = frm;
+            
         }
 
         private void btnMake_Click(object sender, EventArgs e)
         {
-            this.frm.setRCP(makeSetTXPowerRCP());
+            this.FormSendEvent(makeSetTXPowerRCP());
         }
         private string makeSetTXPowerRCP()
         {
+            if (cbPower.Text.Equals(""))
+            {
+                return "There is not enough information";
+            }
+
             int i = 0;
             int pow;
             byte[] RCP = new byte[10];
@@ -47,12 +54,11 @@ namespace MakeRCP
             RCP[i++] = (byte)(pow);
             RCP[i++] = 0x7E; // End Mark
             // CRC
-            CalculatorCRC calculatorCRC = new CalculatorCRC();
-            ushort crc = calculatorCRC.crcAppend(RCP, (ushort)i);
+            ushort crc = CalculatorCRC.crcAppend(RCP, (ushort)i);
             RCP[i++] = (byte)(crc >> 8);
             RCP[i++] = (byte)crc;
 
-            return calculatorCRC.ByteArrayToString(RCP);
+            return CalculatorCRC.ByteArrayToString(RCP);
         }
     }
 }

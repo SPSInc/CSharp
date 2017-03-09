@@ -19,3 +19,17 @@ C:\Users\robin\Desktop\MakeRCP\MakeRCP\obj\Debug\MakeRCP.Properties.Resources.re
 C:\Users\robin\Desktop\MakeRCP\MakeRCP\obj\Debug\MakeRCP.csproj.GenerateResource.Cache
 C:\Users\robin\Desktop\MakeRCP\MakeRCP\obj\Debug\MakeRCP.Form2.resources
 C:\Users\robin\Desktop\MakeRCP\MakeRCP\obj\Debug\MakeRCP.Form3.resources
+C:\Users\yonghwan\Desktop\MakeRCP\bin\Debug\MakeRCP.exe.config
+C:\Users\yonghwan\Desktop\MakeRCP\obj\Debug\MakeRCP.exe
+C:\Users\yonghwan\Desktop\MakeRCP\obj\Debug\MakeRCP.pdb
+C:\Users\yonghwan\Desktop\MakeRCP\bin\Debug\MakeRCP.exe
+C:\Users\yonghwan\Desktop\MakeRCP\bin\Debug\MakeRCP.pdb
+C:\Users\yonghwan\Desktop\MakeRCP\obj\Debug\MakeRCP.csprojResolveAssemblyReference.cache
+C:\Users\yonghwan\Desktop\MakeRCP\obj\Debug\MakeRCP.MainForm.resources
+C:\Users\yonghwan\Desktop\MakeRCP\obj\Debug\MakeRCP.Properties.Resources.resources
+C:\Users\yonghwan\Desktop\MakeRCP\obj\Debug\MakeRCP.csproj.GenerateResource.Cache
+C:\Users\yonghwan\Desktop\MakeRCP\obj\Debug\MakeRCP.PowerOnOffForm.resources
+C:\Users\yonghwan\Desktop\MakeRCP\obj\Debug\MakeRCP.GetInfoForm.resources
+C:\Users\yonghwan\Desktop\MakeRCP\obj\Debug\MakeRCP.SetChForm.resources
+C:\Users\yonghwan\Desktop\MakeRCP\obj\Debug\MakeRCP.SetTxPowerForm.resources
+C:\Users\yonghwan\Desktop\MakeRCP\obj\Debug\MakeRCP.GetSessionForm.resources
